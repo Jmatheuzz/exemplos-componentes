@@ -62,16 +62,27 @@
     padding: 0;
     margin: 0;
     width: 7vw;
-
-    
 }
 
 .options-on li {
     background-color: #FBC037;
-    border: 1px solid black;
+    border: 2px solid black;
     height: 4vh;
-    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
+.options-on li:hover{
+    background-color: #fbc037cf;
+}
+.options-on li:nth-last-child(1){
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
 
+.options-on li:nth-child(1){
+    border-top-right-radius: 5px;
 }
 
 .box {
@@ -83,10 +94,4 @@
     display: flex;
     flex-direction: column;
 
-}
-
-.content{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
 }
