@@ -67,6 +67,7 @@
 .options-on li {
     background-color: #FBC037;
     border: 2px solid black;
+    border-top: 0;
     height: 4vh;
     text-align: center;
     font-weight: 700;
@@ -82,6 +83,7 @@
 }
 
 .options-on li:nth-child(1){
+    border-top: 2px solid black;
     border-top-right-radius: 5px;
 }
 
