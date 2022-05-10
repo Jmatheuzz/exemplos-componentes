@@ -10,9 +10,6 @@
     font-size: 20px;
 }
 
-.input-response-2{
-    
-}
 
 .input-response-1::placeholder, .input-response-2::placeholder {
     color: white;
@@ -130,7 +127,7 @@
     }
     .input-response-1, .input-response-2{
         width: 15vw;
-        height: 5vh;
+        height: 30px;
     }
     .options-on{
         width: 20vw;

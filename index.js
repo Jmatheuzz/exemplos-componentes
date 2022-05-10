@@ -84,7 +84,9 @@ content.addEventListener('mouseleave', ()=>{
     options.classList.add('options');
 });
 
+
 inputResponse2.addEventListener('click', ()=>{
+    inputResponse2.disabled = true;
     options.classList.remove('options');
     options.classList.add('options-on');
     const optionsList = options.querySelectorAll('.option');
