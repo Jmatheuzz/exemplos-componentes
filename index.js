@@ -1,109 +1,99 @@
-const inputResponse1 = document.querySelector(".input-response-1");
-const inputResponse2 = document.querySelector(".input-response-2");
-const responseCorrect1 = document.querySelector(".response-correct-1");
-const responseCorrect2 = document.querySelector(".response-correct-2");
-const formResponse = document.querySelector(".form-response");
-const boxSelect = document.querySelector(".input-box-select");
-const options = document.querySelector(".options");
-const content = document.querySelector(".content");
-const error = document.querySelector('.error');
+const boxText = document.querySelector('#box-text');
+const boxSelect = document.querySelector('#box-select');
 
-inputResponse1.addEventListener('change', ()=>{
-    const value = inputResponse1.value;
-    if(value === '20'){
-        inputResponse1.classList.remove('input-response-1');
-        inputResponse1.classList.add('response-off-1');
-        responseCorrect1.classList.add('response-correct-on-1');
-        responseCorrect1.innerHTML = value;
+const box1 = document.querySelector('.box1');
+const box2 = document.querySelector('.box2');
+
+const erro = document.querySelector('.erro');
+
+const options = document.querySelector('.options');
+
+const formResponse = document.querySelector('.form-response');
+
+const result = document.querySelector('.result');
+
+boxText.addEventListener('change', ()=>{
+    const value = boxText.value;
+    if(value == 20){
+        boxText.style.display = 'none';
+        const p = document.createElement('p');
+        p.innerHTML = value;
+        box1.appendChild(p);
 
     }else{
-        error.classList.remove('error');
-        error.classList
-        .add('error-on');
-        inputResponse1.style.borderTopLeftRadius = '0';
-        inputResponse1.style.borderBottomLeftRadius = '0';
+        erro.classList.remove('erro');
+        erro.classList.add('erro-on');
+        boxText.style.borderTopLeftRadius = '0';
+        boxText.style.borderBottomLeftRadius = '0';
     }
 });
 
-error.addEventListener('click', ()=>{
-    error.classList
-    .remove('error-on');
-    error.classList.add('error');
-    inputResponse1.focus();
-    inputResponse1.value = '';
+erro.addEventListener('click', ()=>{
+    erro.classList.remove('erro-on');
+    erro.classList.add('erro');
+    boxText.value = '';
+    boxText.focus();
+    boxText.style.borderTopLeftRadius = '5px';
+    boxText.style.borderBottomLeftRadius = '5px';
+
 })
 
-inputResponse1.addEventListener('focus', ()=>{
-    inputResponse1.addEventListener('keydown', (e)=>{
-        if(e.keyCode === 13){
-            e.preventDefault();
-            const value = inputResponse1.value;
-            if(value === '20'){
-                inputResponse1.classList.remove('input-response-1');
-                inputResponse1.classList.add('response-off-1');
-                responseCorrect1.classList.add('response-correct-on-1');
-                responseCorrect1.innerHTML = value;
 
-            }else{
-                error.classList.remove('error');
-                error.classList
-                .add('error-on');
-                inputResponse1.style.borderTopLeftRadius = '0';
-                inputResponse1.style.borderBottomLeftRadius = '0';
-            }
-        }
-    })
-});
 
 boxSelect.addEventListener('mouseenter', ()=>{
+    boxSelect.disabled = true;
     options.classList.remove('options');
     options.classList.add('options-on');
-    const optionsList = options.querySelectorAll('.option');
-
-    optionsList.forEach(option => {
-
+    const optionsList = options.querySelectorAll('li');
+    optionsList.forEach(option =>{
         option.addEventListener('click', ()=>{
             const value = option.innerHTML;
-            if(value == 2){
-                inputResponse2.classList.remove('input-response-2');
-                inputResponse2.classList.add('response-off-2');
-                responseCorrect2.classList.add('response-correct-on-2');
-                options.classList.remove('options-on');
-                options.classList.add('options');
-                responseCorrect2.innerHTML = value;
+            if(value === '2'){
+                boxSelect.style.display = 'none';
+                result.classList.add('result-on');
+                result.innerHTML = value;
             }else{
-                inputResponse2.value = value;
+                boxSelect.value = value;
             }
         })
-    });
+    })
 });
 
-content.addEventListener('mouseleave', ()=>{
-    
-    options.classList.remove('options-on');
-    options.classList.add('options');
-});
-
-
-inputResponse2.addEventListener('click', ()=>{
-    inputResponse2.disabled = true;
+boxSelect.addEventListener('click', ()=>{
     options.classList.remove('options');
     options.classList.add('options-on');
-    const optionsList = options.querySelectorAll('.option');
 
-    optionsList.forEach(option => {
-    option.addEventListener('click', ()=>{
-        const value = option.innerHTML;
-        if(value == 2){
-            inputResponse2.classList.remove('input-response-2');
-            inputResponse2.classList.add('response-off-2');
-            responseCorrect2.classList.add('response-correct-on-2');
-            options.classList.remove('options-on');
-            options.classList.add('options');
-            responseCorrect2.innerHTML = value;
-        }else{
-            inputResponse2.value = value;
-        }
+    const optionsList = options.querySelectorAll('li');
+    optionsList.forEach(option =>{
+        option.addEventListener('click', ()=>{
+            const value = option.innerHTML;
+            if(value === '2'){
+                boxSelect.style.display = 'none';
+                const p = document.createElement('p');
+                p.innerHTML = value;
+                box2.appendChild(p);
+            }else{
+                boxSelect.value = value;
+            }
+        })
     })
-    });
+});
+
+options.addEventListener('mouseleave', ()=>{
+    options.classList.remove('options-on');
+    options.classList.add('options');
+    boxSelect.disabled = false;
+})
+
+document.addEventListener('click', (e)=>{
+    if(e.target.id !== 'box-select'){
+        options.classList.remove('options-on');
+        options.classList.add('options');
+        boxSelect.disabled = false;
+    }
+    
+})
+
+formResponse.addEventListener('submit', (e)=>{
+    e.preventDefault();
 })
